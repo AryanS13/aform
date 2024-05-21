@@ -10,7 +10,7 @@ import WorkSpaceList from "@/components/workspace-list/workspace-list"
 import Button from "@/components/global-components/button";
 import EmptyState from "@/components/global-components/empty-state"
 import Search from "@/components/global-components/search"
-import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
+import { BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
 import Link from "next/link"
 
 export default function Dashboard() {
@@ -26,7 +26,7 @@ export default function Dashboard() {
                 <div className="section1 w-1/4 flex flex-col gap-1">
                     <div className="p-4 bg-stone-100">
                         <Link href={'/form/add'}>
-                            <Button {...{text: 'Create new Typeform', type: BUTTON_TYPES.PRIMARY, style: BUTTON_STYLES.NORMAL}} />
+                            <Button {...{text: 'Create new Typeform', type: BUTTON_TYPES.PRIMARY, variant: BUTTON_VARIANTS.NORMAL}} />
                         </Link>
                     </div>
 

@@ -1,7 +1,7 @@
 'use client'
 
 import Button, { ButtonProp } from "../global-components/button"
-import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
+import { BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
 import { useState } from "react"
 
 export interface WorkSpaceListProp {
@@ -15,7 +15,7 @@ export default function WorkSpaceList(props: WorkSpaceListProp) {
     const addButton: ButtonProp = {
         text: '+',
         type: BUTTON_TYPES.PRIMARY,
-        style: BUTTON_STYLES.NORMAL
+        variant: BUTTON_VARIANTS.NORMAL
     }
 
     return (

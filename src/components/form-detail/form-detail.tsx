@@ -1,10 +1,12 @@
-import { BUTTON_TYPES } from "@/helpers/utils";
+import { BUTTON_ICON_POSITIONS, BUTTON_STYLES, BUTTON_TYPES } from "@/helpers/utils";
 import Button from "../global-components/button";
 import Tabs, { TabsProps } from "../global-components/tabs";
 import SearchAbleDropDown from "../global-components/search-dropdown";
 import { DropdownProps, ToggleSwitchProps } from "@/helpers/prop-types";
 import ToggleSwitch from "../global-components/toggle-switch";
 import QuestionBox from "../question-box/question-box";
+import { ComputerDesktopIcon, PlayIcon, PlusIcon } from "@heroicons/react/16/solid";
+import { Cog6ToothIcon } from "@heroicons/react/16/solid";
 
 export default function FormDetail() {
 
@@ -44,11 +46,11 @@ export default function FormDetail() {
 
             </div>
             <div className="form-preview w-3/5 p-2">
-                <div className="options-bar rounded-md bg-stone-100 gap-1 flex">
-                    <Button {...{text: 'Add content', type: BUTTON_TYPES.PRIMARY}} />
-                    <div>Preview</div>
-                    <div>Play</div>
-                    <div>Settings</div>
+                <div className="options-bar rounded-md bg-stone-100 gap-7 flex p-4 items-center">
+                    <Button {...{text: 'Add content', type: BUTTON_TYPES.PRIMARY, style: BUTTON_STYLES.STROKE, icon: PlusIcon, iconPosition: BUTTON_ICON_POSITIONS.LEFT}} />
+                    <div><ComputerDesktopIcon className="h-[20px] cursor-pointer" /></div>
+                    <div><PlayIcon className="h-[20px] cursor-pointer" /></div>
+                    <div>< Cog6ToothIcon className="h-[20px] cursor-pointer" /></div>
                 </div>
                 <div className="preview rounded-md bg-stone-100 gap-1">
 

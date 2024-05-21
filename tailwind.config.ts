@@ -17,10 +17,7 @@ const config: Config = {
   },
   plugins: [],
   safelist: [
-    'bg-red-300',
-    'text-rose-500',
-    'bg-blue-300',
-    'bg-blue-400'
+    {pattern: /(bg|text|border)-./}
   ]
 };
 export default config;

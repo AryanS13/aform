@@ -1,5 +1,5 @@
 import Button, { ButtonProp } from "../global-components/button";
-import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
+import { BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
 
 
 export default function ResponseDetail() {
@@ -7,7 +7,7 @@ export default function ResponseDetail() {
     const increaseRespLimitBtn: ButtonProp = {
         text: 'Increase response limit',
         type: BUTTON_TYPES.PRIMARY,
-        style: BUTTON_STYLES.NORMAL
+        variant: BUTTON_VARIANTS.NORMAL
     }
     return (
         <div className="flex flex-col">

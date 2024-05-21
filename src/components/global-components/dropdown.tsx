@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Button, { ButtonProp } from "./button";
-import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
+import { BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
 
 export interface DropdDownProp {
     type: 'button' | 'icon'
@@ -17,7 +17,7 @@ export function DropDown(props: DropdDownProp) {
     const buttonProps: ButtonProp = {
         text: props.text,
         type: BUTTON_TYPES.PRIMARY,
-        style: BUTTON_STYLES.NORMAL
+        variant: BUTTON_VARIANTS.NORMAL
     }
 
 
