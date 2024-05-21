@@ -4,7 +4,7 @@ import WorkSpaceSection from "./workspace-section/workspace-section";
 
 export default function NavBar() {
     return (
-        <div className="top-nav-bar px-4">
+        <div className="top-nav-bar px-4 mt-2">
             <WorkSpaceSection />
             <ProfileSection />
         </div>

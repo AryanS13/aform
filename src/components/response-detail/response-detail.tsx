@@ -1,4 +1,5 @@
-import Button, { BUTTON_STYLES, BUTTON_TYPES, ButtonProp } from "../global-components/button";
+import Button, { ButtonProp } from "../global-components/button";
+import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
 
 
 export default function ResponseDetail() {

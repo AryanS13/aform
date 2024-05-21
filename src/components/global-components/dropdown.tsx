@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from "react";
-import Button, { BUTTON_STYLES, BUTTON_TYPES, ButtonProp } from "./button";
+import Button, { ButtonProp } from "./button";
+import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
 
 export interface DropdDownProp {
     type: 'button' | 'icon'
@@ -29,7 +30,7 @@ export function DropDown(props: DropdDownProp) {
                 {props.secondaryText && 
                     <span className="text-black flex items-center">aryanoffice13
                         <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            <path stroke="currentColor" strokeWidth="2" d="m1 1 4 4 4-4"/>
                         </svg>
                     </span>
                 }

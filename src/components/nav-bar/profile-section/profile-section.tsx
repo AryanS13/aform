@@ -1,6 +1,5 @@
-import Button, {ButtonProp, BUTTON_TYPES, BUTTON_STYLES} from "@/components/global-components/button";
-
-
+import Button, {ButtonProp} from "@/components/global-components/button";
+import { BUTTON_TYPES, BUTTON_STYLES } from "@/helpers/utils"
 const viewPlanBtnProps: ButtonProp = {
     text: 'View PLans',
     type: BUTTON_TYPES.PRIMARY,
