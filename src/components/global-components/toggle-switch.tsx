@@ -9,7 +9,7 @@ export default function ToggleSwitch(props: ToggleSwitchProps) {
 
     return (
         <div className="flex justify-between items-center" onClick={() => setToggleActive((val) =>  {return !val})}>
-            <h2>{props.name}</h2>
+            <h2 className="text-sm">{props.name}</h2>
             <div className={`w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out ${ toggleActive ? 'bg-green-400' : ''}`}>
             <div className={`bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ease-in-out ${ toggleActive ? 'translate-x-6': ''}`}></div>
             </div>

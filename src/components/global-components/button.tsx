@@ -1,6 +1,6 @@
 // "use client"
 import "../../styles/product.scss"
-import { BUTTON_ICON_POSITIONS, BUTTON_STYLES, BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
+import { BUTTON_ICON_POSITIONS, BUTTON_STYLES, BUTTON_TYPES, BUTTON_VARIANTS, ICON_SIZES } from "@/helpers/utils"
 
 export interface ButtonProp {
     type: BUTTON_TYPES,
@@ -9,6 +9,7 @@ export interface ButtonProp {
     style?: BUTTON_STYLES,
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>,
     iconPosition?: BUTTON_ICON_POSITIONS,
+    iconSize?: ICON_SIZES,
     onClick?: () => void
 }
 
@@ -38,20 +39,20 @@ export default function Button(props: ButtonProp) {
             );
         default:
             return (
-                <button className={`min-w-[60px] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center ${btnClass} gap-2`} type="button"
+                <button className={`flex justify-center min-w-[40px] min-h-[34px] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center items-center ${btnClass} gap-2`} type="button"
                 onClick={props.onClick}
                 >
                     {props?.icon && props?.iconPosition === BUTTON_ICON_POSITIONS.LEFT && 
                     (
-                        <props.icon className="h-[20px]" />
+                        <props.icon className={`${props.iconSize ? 'h-[' + props.iconSize + ']' : 'h-[16px]'}`} />
                     )
                     }
 
-                <span>{props.text}</span>
+                { props.text && <span>{props.text}</span>}
 
                 {props?.icon && props?.iconPosition === BUTTON_ICON_POSITIONS.RIGHT && 
                     <>
-                        {props.icon}
+                        <props.icon className={`${props.iconSize ? 'h-[' + props.iconSize + ']' : 'h-[16px]'}`} />
                     </>
                     }
                 </button>

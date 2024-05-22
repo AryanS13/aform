@@ -19,7 +19,7 @@ export default function Dashboard() {
       values: ['Forms', 'Integrations']
     }
     return (
-        <div className="rounded-layout-container w-full my-4 mx-16 p-2 rounded-md">
+        <div className="rounded-layout-container w-full my-4 mx-16 p-2 rounded-md flex flex-col">
           <Tabs {...tabsProps}/>
 
           <div className="gap-1 flex h-svh">
