@@ -1,3 +1,4 @@
+'use client'
 import { BUTTON_ICON_POSITIONS, BUTTON_STYLES, BUTTON_TYPES, BUTTON_VARIANTS, INPUT_TYPES } from "@/helpers/utils";
 import Button from "../global-components/button";
 import Tabs, { TabsProps } from "../global-components/tabs";
@@ -8,7 +9,6 @@ import QuestionBox from "../question-box/question-box";
 import { Cog6ToothIcon, PlayIcon, PlusIcon, ComputerDesktopIcon, AdjustmentsHorizontalIcon, ArrowsRightLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Seperator from "../global-components/seperator";
 import Input from "../global-components/Input";
-import { PlusSmallIcon } from "@heroicons/react/24/outline";
 
 export default function FormDetail() {
 
