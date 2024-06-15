@@ -3,7 +3,6 @@ import Image from "next/image";
 import NavBar from "@/components/nav-bar/nav-bar";
 import Tabs, { TabsProps } from "@/components/global-components/tabs"
 import "../../styles/product.scss";
-import { redirect } from "next/navigation"
 import ResponseDetail from "@/components/response-detail/response-detail";
 import WorkSpaceBar from "@/components/workspace-bar/workspace-bar"
 import WorkSpaceList from "@/components/workspace-list/workspace-list"
@@ -12,17 +11,54 @@ import EmptyState from "@/components/global-components/empty-state"
 import Search from "@/components/global-components/search"
 import { BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
 import Link from "next/link"
+import { getLocalStorageItem } from "@/services/authservice";
+import { getFormList } from "@/services/formservice";
+import { useEffect, useState } from "react";
+import { Suspense } from "react";
+import { LoadingSkeleton } from "@/components/global-components/loadingSkeleton";
+import { Form } from "@/models/form.model";
+import { ListResult } from "@/models/utils.models";
+import { FormCardsList } from "@/components/form-cards-list/form-cards-list";
 
 export default function Dashboard() {
 
-    const tabsProps: TabsProps = {
-      values: ['Forms', 'Integrations']
+    const [token, setToken] = useState('')
+    const [formsList, setFormsList] = useState<ListResult<Form>>()
+    const [isLoading, setLoading] = useState(true)
+
+ 
+  useEffect(() => {
+    const savedValue = window.localStorage.getItem("token");
+    setToken(savedValue ? savedValue : '');
+
+    const config = {
+        method: 'GET',
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${savedValue}`
+        }
     }
+
+    fetch('/api/forms', config).then((res) => res.json()).then((data) => {
+        console.log(data)
+        setFormsList(data)
+        setLoading(false)
+      })
+    }, [])
+    
+    if (isLoading) return <Suspense fallback={<LoadingSkeleton />}></Suspense>
+    
+
+    // const { data, error, isLoading } = useSWR(['/api/forms', token], ([url, token]) => getFormList(url, token))
+    const tabsProps: TabsProps = {
+        values: ['Forms', 'Integrations']
+    }
+
     return (
         <div className="rounded-layout-container w-full my-4 mx-16 p-2 rounded-md flex flex-col">
-          <Tabs {...tabsProps}/>
+        <Tabs {...tabsProps}/>
 
-          <div className="gap-1 flex h-svh">
+        <div className="gap-1 flex h-svh">
                 <div className="section1 w-1/4 flex flex-col gap-1">
                     <div className="p-4 bg-stone-100">
                         <Link href={'/form/add'}>
@@ -48,12 +84,18 @@ export default function Dashboard() {
                         <WorkSpaceBar />
                     </div>
 
-                    <div className="empty-dtate h-full flex items-center justify-center">
-                        <EmptyState />
-                    </div>
+                    { formsList?.count === 0 && 
+                        <div className="empty-dtate h-full flex items-center justify-center">
+                            <EmptyState />
+                        </div>
+                    }
+                    {
+                        formsList?.count && 
+                        <FormCardsList {...{formsList: formsList}}/>
+                    }
 
                 </div>
-            </div>
+            </div>relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray- py-6 sm:py-12
         </div>
     );
-  }
+}

@@ -13,7 +13,7 @@ export default function Tabs(props: TabsProps) {
             <nav className="flex flex-col sm:flex-row bg-stone-100">
                 {props.values.map((val, index)=> {
                     return ( 
-                        <div>
+                        <div key={index}>
                             <button className={`text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none 
                                 ${index === currentTab ? 'border-b-2 text-blue-500 font-medium border-blue-500' : ''}`}
                                 onClick={()=> {setCurrentTab(index)}}

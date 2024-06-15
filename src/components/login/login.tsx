@@ -13,8 +13,6 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-
-    console.log('hi')
     if (token) {
         router.replace("/dashboard")
         return
@@ -45,7 +43,6 @@ export default function Login() {
         const resp = await response.json();
         setToken(resp['token'])
         setLocalStorageItem('token', resp['token']);
-        console.log('46 line')
       } else {
         const errorData = await response.json();
         console.error('Failed to authenticate:', errorData);

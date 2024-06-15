@@ -11,13 +11,7 @@ export async function GET(request: NextApiRequest) {
 export async function POST(request: Request) {
   const url = `${BASE_URL}/api-token-auth/`;
 
-  console.log('Aryan')
-  // console.log(await request.formData())
-
-  // let formData = await request.formData();
   const data = await request.json();
-
-  console.log(data)
   
   const config = {
     method: 'POST',
@@ -31,12 +25,10 @@ export async function POST(request: Request) {
     const response = await fetch(url, config);
 
     if (response.ok) {
-      console.log()
       const resp = await response.json()
 
       return NextResponse.json(resp, { status: 200 });
     } else {
-      console.log(response.body)
 
       return NextResponse.json({ message: "Failed to authenticate", error: data }, { status: response.status });
     }
