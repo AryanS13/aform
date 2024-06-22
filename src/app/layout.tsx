@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/nav-bar/nav-bar";
+import FormContextProvider from "@/contexts/form.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +20,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col items-center justify h-svh">
-          <NavBar>
-            
-          </NavBar>
-          {children}
+          
+            <NavBar>
+              
+            </NavBar>
+            <FormContextProvider>
+              {children}
+            </FormContextProvider>
         </main>
       </body>
     </html>

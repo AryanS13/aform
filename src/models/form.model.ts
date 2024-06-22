@@ -168,13 +168,13 @@ export class Form extends BaseModel {
     fields: Array<Fields> = [];
     logic: Array<Logic>;
 
-    constructor(json: any) {
+    constructor(json?: any) {
+        
+        super(json);
 
         if (!json) {
             return;
         }
-
-        super(json);
 
         this.id = json['id'] ? json['id'] : this.id;
         this.title = json['title'] ? json['title'] : this.title;

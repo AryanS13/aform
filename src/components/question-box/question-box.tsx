@@ -31,7 +31,7 @@ export default function QuestionBox(props: QuestionProps) {
 
                     default:
                         return (
-                        <div className="h-7 flex w-16 bg-slate-200 p-2 rounded-lg justify-between items-center cursor-pointer">
+                        <div key={index} className="h-7 flex w-16 bg-slate-200 p-2 rounded-lg justify-between items-center cursor-pointer">
                             <DocumentDuplicateIcon className="h-4" />
                             <span className="text-lg font-normal">{index+1}</span>
                         </div>)

@@ -115,8 +115,8 @@ export default function FormDetail() {
 
                 <div className="gap-2 flex flex-col py-5 px-4 gap-5">
                     <span className="text-md font-medium">Settings</span>
-                    {toggleSwitchList.map( item => 
-                        <ToggleSwitch {...item} />
+                    {toggleSwitchList.map( (item, index) => 
+                        <ToggleSwitch key={index} {...item} />
                     )}
                 </div>
 

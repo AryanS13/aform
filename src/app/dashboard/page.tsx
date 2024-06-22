@@ -13,18 +13,24 @@ import { BUTTON_TYPES, BUTTON_VARIANTS } from "@/helpers/utils"
 import Link from "next/link"
 import { getLocalStorageItem } from "@/services/authservice";
 import { getFormList } from "@/services/formservice";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Suspense } from "react";
 import { LoadingSkeleton } from "@/components/global-components/loadingSkeleton";
 import { Form } from "@/models/form.model";
 import { ListResult } from "@/models/utils.models";
-import { FormCardsList } from "@/components/form-cards-list/form-cards-list";
+import { FormCardsList, FormCardListProps } from "@/components/form-cards-list/form-cards-list";
 
 export default function Dashboard() {
 
     const [token, setToken] = useState('')
     const [formsList, setFormsList] = useState<ListResult<Form>>()
     const [isLoading, setLoading] = useState(true)
+
+
+    let formCardListProps: FormCardListProps = {
+        formsList: new ListResult<Form>({}),
+        onClick: gotToFormEdit
+    };
 
  
   useEffect(() => {
@@ -41,6 +47,10 @@ export default function Dashboard() {
 
     fetch('/api/forms', config).then((res) => res.json()).then((data) => {
         console.log(data)
+        formCardListProps = {
+            formsList: data,
+            onClick: gotToFormEdit
+        }
         setFormsList(data)
         setLoading(false)
       })
@@ -52,6 +62,10 @@ export default function Dashboard() {
     // const { data, error, isLoading } = useSWR(['/api/forms', token], ([url, token]) => getFormList(url, token))
     const tabsProps: TabsProps = {
         values: ['Forms', 'Integrations']
+    }
+
+    function gotToFormEdit(event: Form) {
+        console.log('What the fuck is this')
     }
 
     return (
@@ -91,11 +105,11 @@ export default function Dashboard() {
                     }
                     {
                         formsList?.count && 
-                        <FormCardsList {...{formsList: formsList}}/>
+                        <FormCardsList {...{formsList: formsList, onClick: (e) => gotToFormEdit(e)}}/>
                     }
 
                 </div>
-            </div>relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray- py-6 sm:py-12
+            </div>
         </div>
     );
 }

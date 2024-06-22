@@ -22,8 +22,8 @@ export default function SearchAbleDropDown(props: DropdownProps) {
 
                         <input id="search-input" className="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" />
 
-                        { props.values.map(item => 
-                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">{item.name}</a>
+                        { props.values.map((item, index) => 
+                            <a key={index} href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">{item.name}</a>
                         )}    
                         </div> 
                     }   
