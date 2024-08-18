@@ -1,16 +1,14 @@
 'use client'
-import FormDetail from "@/components/form-detail/form-detail";
-import { FormContext } from "@/contexts/form.context";
-
-import { useContext } from "react";
+import FormDetail, { FormDetailProps } from "@/components/form-detail/form-detail";
 
 export default function FormUpdate() {
 
-    const {form, setForm} = useContext(FormContext);
-    
-    console.log('Getting result now')
-    console.log(form);
+    const formDetailProps: FormDetailProps = {
+        newForm: false
+    }
+
+
     return (
-            <FormDetail />
+            <FormDetail {...formDetailProps} />
     )
 }

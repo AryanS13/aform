@@ -2,7 +2,8 @@ import { OptionProps } from "@/helpers/prop-types";
 import { COLOR_TYPES } from "@/helpers/utils";
 
 export type OptionCompProps = {
-    options: Array<OptionProps>
+    options: Array<OptionProps>,
+    onClick: (event: OptionProps) => void
 }
 
 export function Options(props: OptionCompProps) {
@@ -18,7 +19,10 @@ export function Options(props: OptionCompProps) {
                 
                 props.options.map((res, index) => (
                         <li key={index}>
-                            <a href="#" className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${res?.color ? 'text-'+res.color : 'text-black'}`}>{res.name}</a>
+                            <span
+                                className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${res?.color ? 'text-'+res.color : 'text-black'}`}
+                                onClick={() => props.onClick(res)}
+                            >{res.name}</span>
                         </li>
                     )
                 )

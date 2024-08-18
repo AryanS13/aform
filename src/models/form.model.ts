@@ -167,6 +167,7 @@ export class Form extends BaseModel {
 
     fields: Array<Fields> = [];
     logic: Array<Logic>;
+    thank_you_screens: Array<any> = [];
 
     constructor(json?: any) {
         

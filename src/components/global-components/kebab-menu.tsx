@@ -15,7 +15,12 @@ export default function KebabMenu() {
         {
             name: 'delete',
             color: COLOR_TYPES.DANGER
-        }]
+        }],
+        onClick: onOptionsClick
+    }
+
+    function onOptionsClick(event: OptionProps) {
+        console.log('Do something', event);
     }
 
     return (

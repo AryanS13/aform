@@ -21,8 +21,6 @@ import { ListResult } from "@/models/utils.models";
 import { FormCardsList, FormCardListProps } from "@/components/form-cards-list/form-cards-list";
 
 export default function Dashboard() {
-
-    const [token, setToken] = useState('')
     const [formsList, setFormsList] = useState<ListResult<Form>>()
     const [isLoading, setLoading] = useState(true)
 
@@ -34,8 +32,8 @@ export default function Dashboard() {
 
  
   useEffect(() => {
+    setLoading(true)
     const savedValue = window.localStorage.getItem("token");
-    setToken(savedValue ? savedValue : '');
 
     const config = {
         method: 'GET',
@@ -58,14 +56,12 @@ export default function Dashboard() {
     
     if (isLoading) return <Suspense fallback={<LoadingSkeleton />}></Suspense>
     
-
-    // const { data, error, isLoading } = useSWR(['/api/forms', token], ([url, token]) => getFormList(url, token))
     const tabsProps: TabsProps = {
         values: ['Forms', 'Integrations']
     }
 
     function gotToFormEdit(event: Form) {
-        console.log('What the fuck is this')
+        console.log('What the is this')
     }
 
     return (

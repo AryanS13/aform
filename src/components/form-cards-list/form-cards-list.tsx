@@ -11,21 +11,16 @@ export interface FormCardListProps {
 }
 
 export function FormCardsList(props: FormCardListProps) {
-
-    // @ts-ignore
     const { form, setForm } = useContext(FormContext);
 
     console.log(form);
-
-    if (!props?.formsList?.count) {
-        return <></>
-    }
 
     function selectForm(form: Form) {
 
         props.onClick(form);
         setForm(form)
     }
+    
     return <>
     <div className="relative flex min-h-screen flex-col overflow-hidden bg-gray- py-6 sm:py-12">
         <div className="mx-auto max-w-screen-xl px-4 w-full">

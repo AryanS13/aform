@@ -9,8 +9,16 @@ import QuestionBox from "../question-box/question-box";
 import { Cog6ToothIcon, PlayIcon, PlusIcon, ComputerDesktopIcon, AdjustmentsHorizontalIcon, ArrowsRightLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Seperator from "../global-components/seperator";
 import Input from "../global-components/Input";
+import { useContext, useEffect } from "react";
+import { FormContext } from "@/contexts/form.context";
 
-export default function FormDetail() {
+export interface FormDetailProps {
+    newForm: boolean,
+}
+
+export default function FormDetail(props: FormDetailProps) {
+
+    const {form, setForm} = useContext(FormContext);
 
     const tabsProps: TabsProps = {
         values: ['Question', 'Design', 'Logic']
@@ -33,48 +41,12 @@ export default function FormDetail() {
         {name: 'Mobile allowed', checked: false}
     ]
 
-    const dummyQuestionData = [
-        {
-            question: 'What is your name',
-            type: 'short_answer',
-            type_no: 1
-        },
-        {
-            question: 'What is your hobby',
-            type: 'short_answer',
-            type_no: 1
-        },
-        {
-            question: 'How good this will be I cannot wait for the defender',
-            type: 'short_answer',
-            type_no: 1
-        }
-    ];
-
-    const endingsDummyData = [
-        {
-            question: 'What is your name',
-            type: 'ending',
-            type_no: -1
-        },
-        {
-            question: 'What is your hobby',
-            type: 'ending',
-            type_no: -1
-        },
-        {
-            question: 'How good this will be I cannot wait for the defender',
-            type: 'ending',
-            type_no: -1
-        }
-    ]
-
     return (
         <div className="form-container-box h-svh w-svw p-4 flex">
             <div className="questions-list-container w-1/5 flex flex-col gap-1 h-full p-2">
                 <div className="questions-list rounded-md bg-stone-100 p-2 overflow-auto resize-y">
                     <div className="flex flex-col gap-4">
-                        <QuestionBox {...{list: dummyQuestionData}}/>
+                        <QuestionBox {...{fields: form.fields}}/>
                     </div>
                 </div>
                 <div className="endings rounded-md bg-stone-100 p-4 flex-auto">
@@ -83,7 +55,7 @@ export default function FormDetail() {
                             <span className="text-md font-medium">End</span>
                             <Button {...{text: '', icon: PlusIcon,type: BUTTON_TYPES.PRIMARY, variant: BUTTON_VARIANTS.NORMAL, style: BUTTON_STYLES.STROKE, iconPosition: BUTTON_ICON_POSITIONS.LEFT}}/>
                         </div>
-                        <QuestionBox {...{list: endingsDummyData}} />
+                        <QuestionBox {...{fields: form.thank_you_screens}} />
                     </div>
                 </div>
 
